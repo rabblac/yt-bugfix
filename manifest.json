@@ -1,0 +1,17 @@
+{
+  "name": "Youtube Cookies Bugfix",
+  "description": "Deletes automatically cookies from youtube that cause the 400 error.",
+  "icons": {},
+  "version": "1.0",
+  "permissions": [
+    "cookies",
+    "alarms",
+    "*://*.youtube.com/",
+    "http://.youtube.com/",
+    "https://.youtube.com/"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 2
+}
