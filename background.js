@@ -10,26 +10,26 @@ var removeCookie = function (cookie) {
 };
 
 function deleteYTCookies() {
-  console.log("IMMA DELETIN COOKIEZ!!")
+  //DEBUG: console.log("IMMA DELETIN COOKIEZ!!")
   chrome.cookies.getAll({domain: "youtube.com"}, function(cookies){
     for(var i=0; i<cookies.length; i++) {
       //DEBUG: console.log(cookies[i]);
       if (cookies[i].name.indexOf('gsScrollPos') !== -1){
         removeCookie(cookies[i]);
-        console.log("DELETED COOKIE: " + cookies[i].name);
+        //DEBUG: console.log("DELETED COOKIE: " + cookies[i].name);
       }
     }
   });
 }
 
 function onInit() {
-  console.log("onInit event");
+  //DEBUG: console.log("onInit event");
   deleteYTCookies();
-  chrome.alarms.create('DELETEMAHCOOKIEZ', {periodInMinutes: 1});
+  chrome.alarms.create('DELETEMAHCOOKIEZ', {periodInMinutes: 10});
 }
 
 function onAlarm(alarm) {
-  console.log("onAlarm event");
+  //DEBUG: console.log("onAlarm event");
   if (alarm && alarm.name == 'DELETEMAHCOOKIEZ') {
     deleteYTCookies();
   }
